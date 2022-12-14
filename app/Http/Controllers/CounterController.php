@@ -26,6 +26,8 @@ class CounterController extends Controller
     public function getCount()
     {
         try {
+            $head = $_SERVER;
+            return response()->json($head);
             $data = (new Counters)->find(1);
             if ($data == null) {
                 $count = 0;
@@ -37,6 +39,7 @@ class CounterController extends Controller
                 "data" =>  $count
             ];
             Log::info('getCount rsp: '.json_encode($res));
+            
             return response()->json($res);
         } catch (Error $e) {
             $res = [
