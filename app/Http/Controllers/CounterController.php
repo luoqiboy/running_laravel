@@ -28,6 +28,7 @@ class CounterController extends Controller
         try {
             $head = $_SERVER;
             return response()->json($head);
+            
             $data = (new Counters)->find(1);
             if ($data == null) {
                 $count = 0;
